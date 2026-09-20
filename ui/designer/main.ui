@@ -14,21 +14,15 @@
    </rect>
   </property>
   <property name="sizePolicy">
-   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
   </property>
   <property name="minimumSize">
    <size>
-    <width>80</width>
-    <height>80</height>
-   </size>
-  </property>
-  <property name="maximumSize">
-   <size>
-    <width>1100</width>
-    <height>700</height>
+    <width>900</width>
+    <height>600</height>
    </size>
   </property>
   <property name="font">
@@ -37,7 +31,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>NetSafe Auditor</string>
   </property>
   <property name="windowIcon">
    <iconset theme="scanner">
@@ -66,31 +60,6 @@
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QPushButton" name="pushButton_5">
-     <property name="geometry">
-      <rect>
-       <x>200</x>
-       <y>440</y>
-       <width>150</width>
-       <height>44</height>
-      </rect>
-     </property>
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="minimumSize">
-      <size>
-       <width>150</width>
-       <height>44</height>
-      </size>
-     </property>
-     <property name="text">
-      <string>Reports</string>
-     </property>
-    </widget>
     <widget class="QLabel" name="logo_label">
      <property name="geometry">
       <rect>
@@ -320,7 +289,7 @@
         <item row="0" column="1">
          <widget class="QLabel" name="label_assets_value">
           <property name="text">
-           <string>1280</string>
+           <string>—</string>
           </property>
          </widget>
         </item>
@@ -348,14 +317,14 @@
         <item row="1" column="1">
          <widget class="QLabel" name="label_assets_online_value">
           <property name="text">
-           <string>1280</string>
+           <string>—</string>
           </property>
          </widget>
         </item>
         <item row="2" column="1">
          <widget class="QLabel" name="label_assets_offline_value">
           <property name="text">
-           <string>1280</string>
+           <string>—</string>
           </property>
          </widget>
         </item>
@@ -427,7 +396,7 @@
         <item row="0" column="1">
          <widget class="QLabel" name="label_assets_value_2">
           <property name="text">
-           <string>1280</string>
+           <string>—</string>
           </property>
          </widget>
         </item>
@@ -455,14 +424,14 @@
         <item row="1" column="1">
          <widget class="QLabel" name="label_assets_online_value_2">
           <property name="text">
-           <string>1280</string>
+           <string>—</string>
           </property>
          </widget>
         </item>
         <item row="2" column="1">
          <widget class="QLabel" name="label_assets_offline_value_2">
           <property name="text">
-           <string>1280</string>
+           <string>—</string>
           </property>
          </widget>
         </item>
@@ -484,7 +453,7 @@
      </widget>
     </widget>
     <widget class="QWidget" name="page_devices">
-     <widget class="QGroupBox" name="groupBox">
+     <widget class="QGroupBox" name="groupBox_connection">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -514,6 +483,9 @@
             <height>35</height>
            </size>
           </property>
+          <property name="placeholderText">
+           <string>192.0.2.10</string>
+          </property>
          </widget>
         </item>
         <item row="0" column="0">
@@ -530,6 +502,9 @@
             <width>170</width>
             <height>35</height>
            </size>
+          </property>
+          <property name="placeholderText">
+           <string>Username</string>
           </property>
          </widget>
         </item>
@@ -562,6 +537,12 @@
             <height>35</height>
            </size>
           </property>
+          <property name="echoMode">
+           <enum>QLineEdit::Password</enum>
+          </property>
+          <property name="placeholderText">
+           <string>Password</string>
+          </property>
          </widget>
         </item>
         <item row="1" column="1">
@@ -574,22 +555,22 @@
           </property>
           <item>
            <property name="text">
-            <string>cisco-ios</string>
+            <string>cisco_ios</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>PLC-1</string>
+            <string>arista_eos</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>PLC-2</string>
+            <string>juniper_junos</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>paloalto</string>
+            <string>paloalto_panos</string>
            </property>
           </item>
          </widget>
@@ -610,7 +591,7 @@
        <string>Device Inventory Table</string>
       </property>
      </widget>
-     <widget class="QTableView" name="tableView">
+     <widget class="QTableView" name="device_inventory_table">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -647,7 +628,7 @@
        <item row="1" column="1">
         <widget class="QLabel" name="label_12">
          <property name="text">
-          <string>12/12/2026</string>
+          <string>—</string>
          </property>
         </widget>
        </item>
@@ -661,14 +642,14 @@
        <item row="2" column="1">
         <widget class="QLabel" name="label_13">
          <property name="text">
-          <string>02/05/2025</string>
+          <string>—</string>
          </property>
         </widget>
        </item>
        <item row="0" column="1">
         <widget class="QLabel" name="label_14">
          <property name="text">
-          <string>Connected</string>
+          <string>Not connected</string>
          </property>
         </widget>
        </item>
@@ -700,7 +681,7 @@
         <number>10</number>
        </property>
        <item>
-        <widget class="QPushButton" name="pushButton_device_">
+        <widget class="QPushButton" name="button_test_connection">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -719,7 +700,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_device_1">
+        <widget class="QPushButton" name="button_save_device">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -738,7 +719,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_device_2">
+        <widget class="QPushButton" name="button_disconnect">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
            <horstretch>0</horstretch>

@@ -54,14 +54,5 @@ dist/
 .DS_Store
 Thumbs.db
 
-# project notes
-printf "\n# Private local project material - never commit\n_private/\n" >> .gitignore
 # Private local project material
 _private/
-
-# Python generated files
-__pycache__/
-*.py[cod]
-
-# Local editor workspace
-*.sublime-workspace
