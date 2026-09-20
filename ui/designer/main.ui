@@ -191,7 +191,23 @@
            <height>200</height>
           </size>
          </property>
-        </spacer>
+       </spacer>
+      </item>
+       <item>
+        <widget class="QPushButton" name="button_theme_toggle">
+         <property name="minimumSize">
+          <size>
+           <width>150</width>
+           <height>36</height>
+          </size>
+         </property>
+         <property name="toolTip">
+          <string>Switch between light and dark Fusion themes</string>
+         </property>
+         <property name="text">
+          <string>Dark mode</string>
+         </property>
+        </widget>
        </item>
        <item>
         <widget class="QLabel" name="label_version">
