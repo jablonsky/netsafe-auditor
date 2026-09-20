@@ -4,9 +4,7 @@ from PyQt6.QtGui import QIcon
 from PyQt6.QtWidgets import (
     QApplication,
     QButtonGroup,
-    QHBoxLayout,
     QMainWindow,
-    QSizePolicy,
 )
 from PyQt6.uic import loadUi
 
@@ -28,27 +26,11 @@ class MainWindow(QMainWindow):
         self.setWindowIcon(QIcon(str(WINDOW_ICON)))
         self.resize(1100, 700)
 
-        self._configure_window_layout()
         self._configure_navigation()
         self._configure_inactive_actions()
 
         self.action_Exit.triggered.connect(self.close)
         self.statusbar.showMessage("Ready — no device connected")
-
-    def _configure_window_layout(self):
-        """Allow the main content area to grow when the window is resized."""
-        layout = QHBoxLayout(self.centralwidget)
-        layout.setContentsMargins(0, 0, 12, 0)
-        layout.setSpacing(12)
-
-        self.leftSideBarFrame.setFixedWidth(200)
-        self.stackedWidget.setSizePolicy(
-            QSizePolicy.Policy.Expanding,
-            QSizePolicy.Policy.Expanding,
-        )
-
-        layout.addWidget(self.leftSideBarFrame)
-        layout.addWidget(self.stackedWidget, 1)
 
     def _configure_navigation(self):
         """Connect the available sidebar buttons to their application pages."""
