@@ -1,10 +1,11 @@
 import sys
 
-from PyQt6.QtGui import QIcon
+from PyQt6.QtGui import QColor, QIcon, QPalette
 from PyQt6.QtWidgets import (
     QApplication,
     QButtonGroup,
     QMainWindow,
+    QStyleFactory,
 )
 from PyQt6.uic import loadUi
 
@@ -14,6 +15,44 @@ from utils.paths import resource_path
 # UI resources loaded by the application.
 MAIN_WINDOW = resource_path("ui", "designer", "main.ui")
 WINDOW_ICON = resource_path("ui", "designer", "icons", "shield.png")
+
+
+def configure_fusion_style(app):
+    """Apply a predictable dark Fusion style on every desktop platform."""
+    fusion_style = QStyleFactory.create("Fusion")
+    if fusion_style is None:
+        raise RuntimeError("The required Qt Fusion style is not available.")
+
+    app.setStyle(fusion_style)
+
+    palette = QPalette()
+    palette.setColor(QPalette.ColorRole.Window, QColor(53, 53, 53))
+    palette.setColor(QPalette.ColorRole.WindowText, QColor(255, 255, 255))
+    palette.setColor(QPalette.ColorRole.Base, QColor(25, 25, 25))
+    palette.setColor(QPalette.ColorRole.AlternateBase, QColor(53, 53, 53))
+    palette.setColor(QPalette.ColorRole.ToolTipBase, QColor(255, 255, 255))
+    palette.setColor(QPalette.ColorRole.ToolTipText, QColor(255, 255, 255))
+    palette.setColor(QPalette.ColorRole.Text, QColor(255, 255, 255))
+    palette.setColor(QPalette.ColorRole.Button, QColor(53, 53, 53))
+    palette.setColor(QPalette.ColorRole.ButtonText, QColor(255, 255, 255))
+    palette.setColor(QPalette.ColorRole.BrightText, QColor(255, 0, 0))
+    palette.setColor(QPalette.ColorRole.Link, QColor(42, 130, 218))
+    palette.setColor(QPalette.ColorRole.Highlight, QColor(42, 130, 218))
+    palette.setColor(QPalette.ColorRole.HighlightedText, QColor(0, 0, 0))
+    palette.setColor(QPalette.ColorRole.PlaceholderText, QColor(160, 160, 160))
+
+    disabled = QPalette.ColorGroup.Disabled
+    palette.setColor(disabled, QPalette.ColorRole.WindowText, QColor(127, 127, 127))
+    palette.setColor(disabled, QPalette.ColorRole.Text, QColor(127, 127, 127))
+    palette.setColor(disabled, QPalette.ColorRole.ButtonText, QColor(127, 127, 127))
+    palette.setColor(disabled, QPalette.ColorRole.Highlight, QColor(80, 80, 80))
+    palette.setColor(
+        disabled,
+        QPalette.ColorRole.HighlightedText,
+        QColor(127, 127, 127),
+    )
+
+    app.setPalette(palette)
 
 
 class MainWindow(QMainWindow):
@@ -85,6 +124,7 @@ class MainWindow(QMainWindow):
 def main():
     """Start NetSafe Auditor and return the Qt exit code."""
     app = QApplication(sys.argv)
+    configure_fusion_style(app)
     window = MainWindow()
     window.show()
     return app.exec()
